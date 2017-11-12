@@ -1,0 +1,305 @@
+﻿@model AFANDEM.Models.User
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <nav class="navbar navbar-transparent navbar-absolute">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"> Profile </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="material-icons">notifications</i>
+                            <span class="notification">5</span>
+                            <p class="hidden-lg hidden-md">Notifications</p>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Mike John responded to your email</a>
+                            </li>
+                            <li>
+                                <a href="#">You have 5 new tasks</a>
+                            </li>
+                            <li>
+                                <a href="#">You're now friend with Andrew</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Notification</a>
+                            </li>
+                            <li>
+                                <a href="#">Another One</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="./user.html" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="material-icons">person</i>
+                            <p class="hidden-lg hidden-md">Profile</p>
+                        </a>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group  is-empty">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="material-input"></span>
+                    </div>
+                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="card">
+                        <div class="card-header" data-background-color="purple">
+                            <h4 class="title">Edit Profile</h4>
+                            <p class="category">Complete your profile</p>
+                        </div>
+                        <div class="card-content">
+                           @using (Html.BeginForm("Profile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                           {
+                            @Html.AntiForgeryToken()
+                                <div class="row">
+                                    <div class="col-md-6" style="display:none;">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Employee Code</label>
+
+                                            @Html.TextBoxFor(model => model.Id, htmlAttributes: new { @class = "form-control", @disabled = "disabled", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Employee Code</label>
+                                            
+                                            @Html.TextBoxFor(model => model.Code, htmlAttributes: new { @class = "form-control", @disabled = "disabled", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Name</label>
+                                            @Html.TextBoxFor(model => model.Name, htmlAttributes: new { @class = "form-control", @disabled = "disabled", @type = "text" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Email address</label>
+                                            @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "form-control", @type = "email" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Password</label>
+                                            @Html.TextBoxFor(model => model.Password, htmlAttributes: new { @class = "form-control", @type = "text" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Country</label>
+                                            @Html.TextBoxFor(model => model.Country, htmlAttributes: new { @class = "form-control", @disabled = "disabled", @type = "text" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Occupation</label>
+                                            @Html.TextBoxFor(model => model.Occupetion, htmlAttributes: new { @class = "form-control", @disabled = "disabled", @type = "text" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">WhatsApp</label>
+                                            @Html.TextBoxFor(model => model.Whatsapp, htmlAttributes: new { @class = "form-control", @disabled = "disabled", @type = "text" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Phone</label>
+                                            @Html.TextBoxFor(model => model.Phone, htmlAttributes: new { @class = "form-control", @type = "text" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div  class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Hiring Date</label>
+                                            @Html.TextBoxFor(model => model.HireDate, htmlAttributes: new { @class = "form-control", @disabled = "disabled", @type = "text" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Base Salary</label>
+                                            @Html.TextBoxFor(model => model.BaseSalary, htmlAttributes: new { @class = "form-control", @disabled = "disabled", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Commission</label>
+                                            @Html.TextBoxFor(model => model.Comission, htmlAttributes: new { @class = "form-control", @disabled = "disabled", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                                <div class="clearfix"></div>
+                           }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card card-nav-tabs">
+                        <div class="card-header" data-background-color="purple">
+                            <div class="nav-tabs-navigation">
+                                <div class="nav-tabs-wrapper ">
+                                    <div class="row">
+                                        <ul class="nav nav-tabs " data-tabs="tabs">
+                                            <li class=" col-lg-1">
+                                                <a href="#profile" data-toggle="tab">
+                                                    JAN
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="col-lg-1">
+                                                <a href="#messages" data-toggle="tab">
+                                                    FEB
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="col-lg-1">
+                                                <a href="#messages" data-toggle="tab">
+                                                    MAR
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="col-lg-1">
+                                                <a href="#messages" data-toggle="tab">
+                                                    APR
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="col-lg-1">
+                                                <a href="#messages" data-toggle="tab">
+                                                    MAY
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="col-lg-1">
+                                                <a href="#messages" data-toggle="tab">
+                                                    JUN
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="col-lg-1">
+                                                <a href="#messages" data-toggle="tab">
+                                                    JULY
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="col-lg-1">
+                                                <a href="#messages" data-toggle="tab">
+                                                    AUG
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="col-lg-1">
+                                                <a href="#messages" data-toggle="tab">
+                                                    SEP
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="active col-lg-1">
+                                                <a href="#messages" data-toggle="tab">
+                                                    OCT
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="col-lg-1">
+                                                <a href="#messages" data-toggle="tab">
+                                                    NOV
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="col-lg-1">
+                                                <a href="#messages" data-toggle="tab">
+                                                    DEC
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content table-responsive">
+                            <table class="table table-hover">
+                                <thead class="text-primary">
+                                <th>Date</th>
+                                <th>Start Time</th>
+                                <th>Finish Time</th>
+                                <th>Loan</th>
+                                <th>Bounces</th>
+                                <th>Penalties</th>
+                                <th>Total Salary</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>02:18:00</td>
+                                        <td>04:00:00</td>
+                                        <td>2.00</td>
+                                        <td>0.11</td>
+                                        <td>0.10</td>
+                                        <td>200.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
